@@ -1,12 +1,10 @@
 obj = main.o
 
-edit : main.o
-	gcc -o edit $(obj)
 
-#main.o: main.c
-#	gcc -c main.c
-#main.o: def.h
-$(obj): def.h
+all: $(obj)
+
+$(obj): %.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
 # fake 
 .PHONY: clean
